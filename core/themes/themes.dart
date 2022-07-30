@@ -10,14 +10,18 @@ class AppTheme {
   AppTheme._();
 
   static ThemeData lightTheme = ThemeData.light().copyWith(
-    brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppThemeAppBarTheme.appBarThemeDefault,
     textTheme: AppThemeTextTheme.textThemeDefault,
     bottomNavigationBarTheme:
         AppThemeBottomNavigationBarTheme.bottomNavigationBarThemeDefault,
+    elevatedButtonTheme: AppThemeButtonTheme.elevatedButtonThemeDataDefault,
+    textButtonTheme: AppThemeButtonTheme.textButtonThemeDataDefault,
+    outlinedButtonTheme: AppThemeButtonTheme.outlinedButtonThemeDataDefault,
+    buttonTheme: AppThemeButtonTheme.buttonThemeDataDefault,
   );
 
   static ThemeData darkTheme = ThemeData.dark().copyWith(
-    brightness: Brightness.dark,
     scaffoldBackgroundColor: Colors.black,
     appBarTheme: AppThemeAppBarTheme.appBarThemeDefault,
     textTheme: AppThemeTextTheme.textThemeDefault,
