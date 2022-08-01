@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:noice/di.dart';
+import 'di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../ui/screens/onboarding_screen/onboarding_screen.dart';
 import '../core/constants/color_constants.dart';
