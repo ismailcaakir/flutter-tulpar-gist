@@ -9,7 +9,7 @@ import 'routes/routes.dart';
 import 'ui/screens/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
-  await Init.ensureInitializer();
+  await AppInit.ensureInitializer();
   configureDependencies();
   runApp(
     ProviderScope(
@@ -29,7 +29,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final Future _initFuture = Init.startApp();
+  final Future _initFuture = AppInit.startApp();
 
   @override
   Widget build(BuildContext context) {

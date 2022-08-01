@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class Init {
-  Init._();
+class AppInit {
+  AppInit._();
 
   static Future<String?> startApp() async {
     return Future.delayed(const Duration(seconds: 2), () => "/");
