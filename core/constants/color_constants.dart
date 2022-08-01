@@ -7,6 +7,7 @@ class AppColorConstants {
 
   // the properties are static so that we can use them without a class instance
   // e.g. can be retrieved by `AppConfig.appName`.
+  static const Color transparent = Colors.transparent;
   static const Color white = Colors.white;
   static const Color black = Colors.black;
 }

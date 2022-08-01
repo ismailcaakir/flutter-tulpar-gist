@@ -5,30 +5,33 @@ class AppThemeTextTheme {
   // e.g. invoke `AppConfig()` accidentally
   AppThemeTextTheme._();
 
-  static const TextTheme textThemeDefault = TextTheme(
-    // TITLES
-    titleLarge: TextStyle(),
-    titleMedium: TextStyle(),
-    titleSmall: TextStyle(),
+  static TextTheme getTextThemeDefault(BuildContext context) {
+    return Theme.of(context).textTheme.copyWith(
+          // TITLES
+          titleLarge: Theme.of(context).textTheme.titleLarge!.copyWith(),
+          titleMedium: Theme.of(context).textTheme.titleMedium!.copyWith(),
+          titleSmall: Theme.of(context).textTheme.titleSmall!.copyWith(),
 
-    // HEADLINE
-    headlineLarge: TextStyle(),
-    headlineMedium: TextStyle(),
-    headlineSmall: TextStyle(),
+          // HEADLINE
+          headlineLarge: Theme.of(context).textTheme.headlineLarge!.copyWith(),
+          headlineMedium:
+              Theme.of(context).textTheme.headlineMedium!.copyWith(),
+          headlineSmall: Theme.of(context).textTheme.headlineSmall!.copyWith(),
 
-    // BODY
-    bodyLarge: TextStyle(),
-    bodyMedium: TextStyle(),
-    bodySmall: TextStyle(),
+          // BODY
+          bodyLarge: Theme.of(context).textTheme.bodyLarge!.copyWith(),
+          bodyMedium: Theme.of(context).textTheme.bodyMedium!.copyWith(),
+          bodySmall: Theme.of(context).textTheme.bodySmall!.copyWith(),
 
-    // LABEL
-    labelLarge: TextStyle(),
-    labelMedium: TextStyle(),
-    labelSmall: TextStyle(),
+          // LABEL
+          labelLarge: Theme.of(context).textTheme.labelLarge!.copyWith(),
+          labelMedium: Theme.of(context).textTheme.labelMedium!.copyWith(),
+          labelSmall: Theme.of(context).textTheme.labelSmall!.copyWith(),
 
-    // DISPLAY
-    displayLarge: TextStyle(),
-    displayMedium: TextStyle(),
-    displaySmall: TextStyle(),
-  );
+          // DISPLAY
+          displayLarge: Theme.of(context).textTheme.displayLarge!.copyWith(),
+          displayMedium: Theme.of(context).textTheme.displayMedium!.copyWith(),
+          displaySmall: Theme.of(context).textTheme.displaySmall!.copyWith(),
+        );
+  }
 }

@@ -5,7 +5,7 @@ class Init {
   Init._();
 
   static Future<String?> startApp() async {
-    return Future.delayed(const Duration(seconds: 1), () => "/");
+    return Future.delayed(const Duration(seconds: 2), () => "/");
   }
 
   /**

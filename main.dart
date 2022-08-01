@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:noice/di.dart';
 import 'package:sizer/sizer.dart';
 import 'core/themes/themes.dart';
 import 'init.dart';
@@ -8,16 +10,18 @@ import 'ui/screens/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
   await Init.ensureInitializer();
-
+  configureDependencies();
   runApp(
-    EasyLocalization(
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('tr', 'TR'),
-      ],
-      path: 'lib/locales',
-      fallbackLocale: const Locale('en', 'US'),
-      child: MyApp(),
+    ProviderScope(
+      child: EasyLocalization(
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('tr', 'TR'),
+        ],
+        path: 'lib/locales',
+        fallbackLocale: const Locale('en', 'US'),
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -50,8 +54,8 @@ class MyApp extends StatelessWidget {
               routeInformationParser: AppRoutes.router.routeInformationParser,
               routerDelegate: AppRoutes.router.routerDelegate,
               title: "asd",
-              theme: AppTheme.lightTheme,
-              darkTheme: AppTheme.darkTheme,
+              theme: AppTheme.getLightTheme(context),
+              darkTheme: AppTheme.getDarkTheme(context),
             );
           },
         );
