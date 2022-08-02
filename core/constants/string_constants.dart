@@ -1,9 +1,6 @@
-class AppStringConstants {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppStringConstants._();
+import 'package:injectable/injectable.dart';
 
-  // the properties are static so that we can use them without a class instance
-  // e.g. can be retrieved by `AppConfig.appName`.
+@singleton
+class AppStringConstants {
   static const String example = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 }

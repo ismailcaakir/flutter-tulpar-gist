@@ -1,50 +1,66 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:injectable/injectable.dart';
+import '../core/constants/color_constants.dart';
+import 'pages.dart';
 import '../di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../ui/screens/onboarding_screen/onboarding_screen.dart';
-import '../core/constants/color_constants.dart';
 import '../ui/screens/error_screen/error_screen.dart';
 
+@singleton
+@injectable
 class AppRoutes {
-  AppRoutes._();
+  GoRouter get router => _router;
 
-  static final GoRouter router = GoRouter(
+  static final GoRouter _router = GoRouter(
     initialLocation: "/",
     routes: <GoRoute>[
       GoRoute(
-        path: '/',
-        name: "home",
+        path: APP_PAGE.home.routePath,
+        name: APP_PAGE.home.routeName,
         builder: (BuildContext context, GoRouterState state) {
           return Scaffold(
+            appBar: AppBar(
+              title: const Text('Home Page'),
+            ),
             body: Center(
               child: Text("hello_world".tr(),
-                  style: const TextStyle(
-                      fontSize: 30, color: AppColorConstants.black)),
+                  style: TextStyle(
+                      fontSize: 30, color: AppColorConstants().black)),
             ),
           );
         },
       ),
       GoRoute(
-        path: '/onboarding',
-        name: "onboarding",
+        path: APP_PAGE.onboarding.routePath,
+        name: APP_PAGE.onboarding.routeName,
         builder: (BuildContext context, GoRouterState state) {
           return const OnboardingScreen();
         },
       ),
       GoRoute(
-        path: '/example',
-        name: "example",
+        path: APP_PAGE.example.routePath,
+        name: APP_PAGE.example.routeName,
         builder: (BuildContext context, GoRouterState state) {
-          return const Scaffold(
+          return Scaffold(
             body: Center(
               child: Text("Example Page",
-                  style:
-                      TextStyle(fontSize: 30, color: AppColorConstants.black)),
+                  style: TextStyle(
+                      fontSize: 30, color: AppColorConstants().black)),
             ),
           );
         },
+        routes: <GoRoute>[
+          GoRoute(
+            path: "${APP_PAGE.example.routePath.replaceFirst('/', '')}/child",
+            name: "${APP_PAGE.example.routePath}_child",
+            builder: (BuildContext context, GoRouterState state) {
+              return const ErrorScreen();
+            },
+          ),
+        ],
       ),
     ],
 

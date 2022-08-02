@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@singleton
 class AppColorConstants {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppColorConstants._();
+  @Named("transparent")
+  Color get transparent => Colors.transparent;
 
-  // the properties are static so that we can use them without a class instance
-  // e.g. can be retrieved by `AppConfig.appName`.
-  static const Color transparent = Colors.transparent;
-  static const Color white = Colors.white;
-  static const Color black = Colors.black;
+  @Named("white")
+  Color get white => Colors.white;
+
+  @Named("black")
+  Color get black => Colors.black;
 }

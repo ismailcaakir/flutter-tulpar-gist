@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:sizer/sizer.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -81,8 +82,12 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             decoration: pageDecoration,
           );
         }).toList(),
-        onDone: () => {},
-        onSkip: () => {},
+        onDone: () => {
+          context.go('/'),
+        },
+        onSkip: () => {
+          context.go('/'),
+        },
         showSkipButton: true,
         skipOrBackFlex: 1,
         nextFlex: 1,

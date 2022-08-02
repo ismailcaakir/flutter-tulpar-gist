@@ -1,9 +1,7 @@
-class AppConfig {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppConfig._();
+import 'package:injectable/injectable.dart';
 
-  // the properties are static so that we can use them without a class instance
-  // e.g. can be retrieved by `AppConfig.appName`.
-  static const String appName = 'Tulpar Example App';
+@singleton
+class AppConfig {
+  @Named("AppName")
+  String get appName => 'My App Name';
 }

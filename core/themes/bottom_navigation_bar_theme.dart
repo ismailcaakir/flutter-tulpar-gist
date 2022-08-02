@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import '../constants/color_constants.dart';
 
+@singleton
+@injectable
 class AppThemeBottomNavigationBarTheme {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppThemeBottomNavigationBarTheme._();
+  final AppColorConstants _appColorConstants;
 
-  static const BottomNavigationBarThemeData bottomNavigationBarThemeDefault =
-      BottomNavigationBarThemeData();
+  AppThemeBottomNavigationBarTheme(this._appColorConstants);
+
+  AppColorConstants get appColorConstants => _appColorConstants;
+
+  BottomNavigationBarThemeData getBottomNavigationBarTheme(
+    BuildContext context,
+  ) {
+    return Theme.of(context).bottomNavigationBarTheme.copyWith();
+  }
 }

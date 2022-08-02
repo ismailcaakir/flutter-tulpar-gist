@@ -1,18 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import '../constants/color_constants.dart';
 
+@singleton
+@injectable
 class AppThemeButtonTheme {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppThemeButtonTheme._();
+  final AppColorConstants _appColorConstants;
 
-  static const ButtonThemeData buttonThemeDataDefault = ButtonThemeData();
+  AppThemeButtonTheme(this._appColorConstants);
 
-  static const ElevatedButtonThemeData elevatedButtonThemeDataDefault =
-      ElevatedButtonThemeData();
+  AppColorConstants get appColorConstants => _appColorConstants;
 
-  static const TextButtonThemeData textButtonThemeDataDefault =
-      TextButtonThemeData();
+  ButtonThemeData getButtonThemeDataDefault(
+    BuildContext context,
+  ) {
+    return Theme.of(context).buttonTheme.copyWith();
+  }
 
-  static const OutlinedButtonThemeData outlinedButtonThemeDataDefault =
-      OutlinedButtonThemeData();
+  ElevatedButtonThemeData getElevatedButtonThemeDataDefault(
+    BuildContext context,
+  ) {
+    return ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(),
+    );
+  }
+
+  TextButtonThemeData getTextButtonThemeDataDefault(
+    BuildContext context,
+  ) {
+    return TextButtonThemeData(
+      style: TextButton.styleFrom(),
+    );
+  }
+
+  OutlinedButtonThemeData getOutlinedButtonThemeDataDefault(
+    BuildContext context,
+  ) {
+    return OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(),
+    );
+  }
 }

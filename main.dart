@@ -1,11 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/app.dart';
 import 'di.dart';
 import 'package:sizer/sizer.dart';
-import 'core/themes/themes.dart';
 import 'init.dart';
-import 'routes/routes.dart';
 import 'ui/screens/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
@@ -33,6 +32,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    App app = getIt<App>();
+
     return Sizer(
       builder: (
         BuildContext context,
@@ -50,12 +51,12 @@ class MyApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               routeInformationProvider:
-                  AppRoutes.router.routeInformationProvider,
-              routeInformationParser: AppRoutes.router.routeInformationParser,
-              routerDelegate: AppRoutes.router.routerDelegate,
-              title: "asd",
-              theme: AppTheme.getLightTheme(context),
-              darkTheme: AppTheme.getDarkTheme(context),
+                  app.routes.router.routeInformationProvider,
+              routeInformationParser: app.routes.router.routeInformationParser,
+              routerDelegate: app.routes.router.routerDelegate,
+              title: "a",
+              theme: app.theme.getLightTheme(context),
+              darkTheme: app.theme.getDarkTheme(context),
             );
           },
         );

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import '../constants/color_constants.dart';
 
+@singleton
+@injectable
 class AppThemeTextTheme {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppThemeTextTheme._();
+  final AppColorConstants _appColorConstants;
 
-  static TextTheme getTextThemeDefault(BuildContext context) {
+  AppThemeTextTheme(this._appColorConstants);
+
+  AppColorConstants get appColorConstants => _appColorConstants;
+
+  TextTheme getTextThemeDefault(BuildContext context) {
     return Theme.of(context).textTheme.copyWith(
           // TITLES
           titleLarge: Theme.of(context).textTheme.titleLarge!.copyWith(),

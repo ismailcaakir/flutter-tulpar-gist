@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import '../constants/color_constants.dart';
 
+@singleton
+@injectable
 class AppThemeAppBarTheme {
-  // add a private constructor to prevent this class being instantiated
-  // e.g. invoke `AppConfig()` accidentally
-  AppThemeAppBarTheme._();
+  final AppColorConstants _appColorConstants;
 
-  static const AppBarTheme appBarThemeDefault = AppBarTheme();
+  AppThemeAppBarTheme(this._appColorConstants);
+
+  AppColorConstants get appColorConstants => _appColorConstants;
+
+  AppBarTheme getAppBarThemeDefault(
+    BuildContext context,
+  ) {
+    return Theme.of(context).appBarTheme.copyWith(
+          centerTitle: false,
+        );
+  }
 }
