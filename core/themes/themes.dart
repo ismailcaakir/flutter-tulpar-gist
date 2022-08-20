@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:noise/core/constants/color_constants.dart';
+import '../../di.dart';
 import 'app_bar_theme.dart';
 import 'bottom_navigation_bar_theme.dart';
 import 'button_theme.dart';
@@ -24,35 +26,37 @@ class AppTheme {
 
   AppThemeTextTheme get textTheme => _textTheme;
 
-  getLightTheme(BuildContext context) {
-    return Theme.of(context).copyWith(
-      scaffoldBackgroundColor: Colors.white,
-      appBarTheme: appBarTheme.getAppBarThemeDefault(context),
-      textTheme: textTheme.getTextThemeDefault(context),
+  getLightTheme() {
+    return ThemeData.light().copyWith(
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: getIt<AppColorConstants>().white,
+      appBarTheme: appBarTheme.getAppBarThemeDefault(
+        ThemeData.light().appBarTheme,
+      ),
       bottomNavigationBarTheme:
-          bottomNavigationBarTheme.getBottomNavigationBarTheme(context),
-      elevatedButtonTheme:
-          buttonThemeData.getElevatedButtonThemeDataDefault(context),
-      textButtonTheme: buttonThemeData.getTextButtonThemeDataDefault(context),
-      outlinedButtonTheme:
-          buttonThemeData.getOutlinedButtonThemeDataDefault(context),
-      buttonTheme: buttonThemeData.getButtonThemeDataDefault(context),
+          bottomNavigationBarTheme.getBottomNavigationBarTheme(
+        ThemeData.light().bottomNavigationBarTheme,
+      ),
+      textTheme: textTheme.getTextThemeDefault(
+        ThemeData.light().textTheme,
+      ),
     );
   }
 
-  getDarkTheme(BuildContext context) {
+  getDarkTheme() {
     return ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: Colors.white,
-      appBarTheme: appBarTheme.getAppBarThemeDefault(context),
-      textTheme: textTheme.getTextThemeDefault(context),
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: getIt<AppColorConstants>().black,
+      appBarTheme: appBarTheme.getAppBarThemeDefault(
+        ThemeData.dark().appBarTheme,
+      ),
       bottomNavigationBarTheme:
-          bottomNavigationBarTheme.getBottomNavigationBarTheme(context),
-      elevatedButtonTheme:
-          buttonThemeData.getElevatedButtonThemeDataDefault(context),
-      textButtonTheme: buttonThemeData.getTextButtonThemeDataDefault(context),
-      outlinedButtonTheme:
-          buttonThemeData.getOutlinedButtonThemeDataDefault(context),
-      buttonTheme: buttonThemeData.getButtonThemeDataDefault(context),
+          bottomNavigationBarTheme.getBottomNavigationBarTheme(
+        ThemeData.light().bottomNavigationBarTheme,
+      ),
+      textTheme: textTheme.getTextThemeDefault(
+        ThemeData.dark().textTheme,
+      ),
     );
   }
 }

@@ -12,10 +12,10 @@ class AppThemeAppBarTheme {
   AppColorConstants get appColorConstants => _appColorConstants;
 
   AppBarTheme getAppBarThemeDefault(
-    BuildContext context,
+    AppBarTheme appBarTheme,
   ) {
-    return Theme.of(context).appBarTheme.copyWith(
-          centerTitle: false,
-        );
+    return appBarTheme.copyWith(
+      centerTitle: false,
+    );
   }
 }

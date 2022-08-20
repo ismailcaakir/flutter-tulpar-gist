@@ -11,31 +11,22 @@ class AppThemeButtonTheme {
 
   AppColorConstants get appColorConstants => _appColorConstants;
 
-  ButtonThemeData getButtonThemeDataDefault(
-    BuildContext context,
+  getElevatedButtonThemeDataDefault(
+    ElevatedButtonThemeData elevatedButtonTheme,
   ) {
-    return Theme.of(context).buttonTheme.copyWith();
-  }
-
-  ElevatedButtonThemeData getElevatedButtonThemeDataDefault(
-    BuildContext context,
-  ) {
-    return ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(),
+    return elevatedButtonTheme.style?.copyWith(
+      backgroundColor: MaterialStateProperty.all(Colors.red),
+      shadowColor: MaterialStateProperty.all(Colors.red),
     );
   }
 
-  TextButtonThemeData getTextButtonThemeDataDefault(
-    BuildContext context,
-  ) {
+  TextButtonThemeData getTextButtonThemeDataDefault() {
     return TextButtonThemeData(
       style: TextButton.styleFrom(),
     );
   }
 
-  OutlinedButtonThemeData getOutlinedButtonThemeDataDefault(
-    BuildContext context,
-  ) {
+  OutlinedButtonThemeData getOutlinedButtonThemeDataDefault() {
     return OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(),
     );

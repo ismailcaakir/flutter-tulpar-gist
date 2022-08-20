@@ -11,33 +11,31 @@ class AppThemeTextTheme {
 
   AppColorConstants get appColorConstants => _appColorConstants;
 
-  TextTheme getTextThemeDefault(BuildContext context) {
-    return Theme.of(context).textTheme.copyWith(
-          // TITLES
-          titleLarge: Theme.of(context).textTheme.titleLarge!.copyWith(),
-          titleMedium: Theme.of(context).textTheme.titleMedium!.copyWith(),
-          titleSmall: Theme.of(context).textTheme.titleSmall!.copyWith(),
+  TextTheme getTextThemeDefault(TextTheme textTheme) {
+    return textTheme.copyWith(
+      // TITLES
+      titleLarge: textTheme.titleLarge!.copyWith(),
+      titleMedium: textTheme.titleMedium!.copyWith(),
+      titleSmall: textTheme.titleSmall!.copyWith(),
 
-          // HEADLINE
-          headlineLarge: Theme.of(context).textTheme.headlineLarge!.copyWith(),
-          headlineMedium:
-              Theme.of(context).textTheme.headlineMedium!.copyWith(),
-          headlineSmall: Theme.of(context).textTheme.headlineSmall!.copyWith(),
+      // HEADLINE
+      headlineLarge: textTheme.headlineLarge!.copyWith(),
+      headlineMedium: textTheme.headlineMedium!.copyWith(),
+      headlineSmall: textTheme.headlineSmall!.copyWith(),
 
-          // BODY
-          bodyLarge: Theme.of(context).textTheme.bodyLarge!.copyWith(),
-          bodyMedium: Theme.of(context).textTheme.bodyMedium!.copyWith(),
-          bodySmall: Theme.of(context).textTheme.bodySmall!.copyWith(),
+      // BODY
+      bodyLarge: textTheme.bodyLarge!.copyWith(),
+      bodyMedium: textTheme.bodyMedium!.copyWith(),
+      bodySmall: textTheme.bodySmall!.copyWith(),
 
-          // LABEL
-          labelLarge: Theme.of(context).textTheme.labelLarge!.copyWith(),
-          labelMedium: Theme.of(context).textTheme.labelMedium!.copyWith(),
-          labelSmall: Theme.of(context).textTheme.labelSmall!.copyWith(),
+      // LABEL
+      labelLarge: textTheme.labelLarge!.copyWith(),
+      labelMedium: textTheme.labelMedium!.copyWith(),
+      labelSmall: textTheme.labelSmall!.copyWith(),
 
-          // DISPLAY
-          displayLarge: Theme.of(context).textTheme.displayLarge!.copyWith(),
-          displayMedium: Theme.of(context).textTheme.displayMedium!.copyWith(),
-          displaySmall: Theme.of(context).textTheme.displaySmall!.copyWith(),
-        );
+      // DISPLAY
+      displayMedium: textTheme.displayMedium!.copyWith(),
+      displaySmall: textTheme.displaySmall!.copyWith(),
+    );
   }
 }

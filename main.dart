@@ -4,14 +4,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/app.dart';
 import 'di.dart';
 import 'package:sizer/sizer.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'core/services/storage/hive_storage_service.dart';
+import 'core/services/storage/storage_service.dart';
+import 'core/services/storage/storage_service_provider.dart';
 import 'init.dart';
 import 'ui/screens/splash_screen/splash_screen.dart';
 
 Future<void> main() async {
   await AppInit.ensureInitializer();
   configureDependencies();
+  // Hive-specific initialization
+  await Hive.initFlutter();
+  final StorageService initializedStorageService = HiveStorageService();
+  await initializedStorageService.init();
   runApp(
     ProviderScope(
+      overrides: [
+        storageServiceProvider.overrideWithValue(initializedStorageService),
+      ],
       child: EasyLocalization(
         supportedLocales: const [
           Locale('en', 'US'),
@@ -25,13 +36,13 @@ Future<void> main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   MyApp({Key? key}) : super(key: key);
 
   final Future _initFuture = AppInit.startApp();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     App app = getIt<App>();
 
     return Sizer(
@@ -54,9 +65,10 @@ class MyApp extends StatelessWidget {
                   app.routes.router.routeInformationProvider,
               routeInformationParser: app.routes.router.routeInformationParser,
               routerDelegate: app.routes.router.routerDelegate,
-              title: "a",
-              theme: app.theme.getLightTheme(context),
-              darkTheme: app.theme.getDarkTheme(context),
+              title: "Tulpar Example App",
+              themeMode: ThemeMode.light,
+              theme: app.theme.getLightTheme(),
+              darkTheme: app.theme.getDarkTheme(),
             );
           },
         );

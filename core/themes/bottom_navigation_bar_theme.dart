@@ -12,8 +12,8 @@ class AppThemeBottomNavigationBarTheme {
   AppColorConstants get appColorConstants => _appColorConstants;
 
   BottomNavigationBarThemeData getBottomNavigationBarTheme(
-    BuildContext context,
+    BottomNavigationBarThemeData bottomNavigationBarTheme,
   ) {
-    return Theme.of(context).bottomNavigationBarTheme.copyWith();
+    return bottomNavigationBarTheme.copyWith();
   }
 }
