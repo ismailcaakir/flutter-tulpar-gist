@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:noise/core/constants/color_constants.dart';
+import '../constants/color_constants.dart';
 import '../../di.dart';
 import 'app_bar_theme.dart';
 import 'bottom_navigation_bar_theme.dart';

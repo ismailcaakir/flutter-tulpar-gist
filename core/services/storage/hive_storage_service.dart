@@ -6,6 +6,8 @@ class HiveStorageService implements StorageService {
 
   Future<void> openBox([String boxName = 'TULPAR_APP_NAME']) async {
     hiveBox = await Hive.openBox(boxName);
+    // ignore: avoid_print
+    print("HIVE BOX OPENED: ${hiveBox.path}");
   }
 
   @override
